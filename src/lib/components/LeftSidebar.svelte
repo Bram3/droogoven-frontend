@@ -86,15 +86,15 @@
 		<div class="flex flex-col content-between justify-between w-full">
 			<div class="grid grid-flow-row gap-3">
 				{#if currentTask.never_ending}
-					<p class="text-2xl font-semibold text-center pb-2">Never Ending</p>
+					Duration: <p class="text-2xl font-semibold text-center pb-2">Duration: Never Ending</p>
 				{:else}
 					<p class="text-2xl font-semibold text-center pb-2">
 						Duration: {currentTask.days}d {currentTask.hours}h {currentTask.minutes}m
 					</p>
-					<p class="text-2xl font-semibold text-center pb-2">
-						Max Temperature: {currentTask.max_temperature}°C
-					</p>
 				{/if}
+				<p class="text-2xl font-semibold text-center pb-2">
+					Max Temperature: {currentTask.max_temperature}°C
+				</p>
 
 				<button on:click={stop} class="btn variant-filled-error">Stop</button>
 			</div>
