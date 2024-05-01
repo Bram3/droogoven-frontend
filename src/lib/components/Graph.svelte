@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Chart from 'chart.js/auto';
 	import { onMount } from 'svelte';
-	import { websocketStore } from '../../stores/websocketStore';
+	import type { SensorData } from '$lib/types';
+	import { io } from '$lib/ws';
 
 	onMount(() => {
 		const ctx = document.getElementById('chart') as HTMLCanvasElement;
@@ -30,11 +31,10 @@
 				scales: {
 					y: {
 						beginAtZero: true,
-                        ticks: {
-                            color: "white",
-                            stepSize: 5
-                        }
-
+						ticks: {
+							color: 'white',
+							stepSize: 5
+						}
 					},
 					x: {
 						display: false
@@ -43,26 +43,26 @@
 				animation: {
 					duration: 0 // Turn off animations for smoother updates
 				},
-                color: "white",
-                maintainAspectRatio: false
+				color: 'white',
+				maintainAspectRatio: false
 			}
 		});
-        websocketStore.subscribe((data) => {
-        if (data) {
-            
-            if (chart.data.datasets[0].data.length >= 50) {
-                chart.data.datasets[0].data.shift(); // For temperature
-                chart.data.datasets[1].data.shift(); // For humidity
-            }
+		io.on('sensor_state', (data) => {
+			data = data as SensorData
 
-            //@ts-ignore
-            chart.data.datasets[0].data.push(data.average_temp);
-            //@ts-ignore
-            chart.data.datasets[1].data.push(data.am2320_humidity);
+			if (data) {
+				if (chart.data.datasets[0].data.length >= 50) {
+					chart.data.datasets[0].data.shift(); // For temperature
+					chart.data.datasets[1].data.shift(); // For humidity
+				}
+				//@ts-ignore
+				chart.data.datasets[0].data.push(data.average_temp);
+				//@ts-ignore
+				chart.data.datasets[1].data.push(data.am2320_humidity);
 
-            chart.update();
-        }
-    });
+				chart.update();
+			}
+		});
 	});
 </script>
 

@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { websocketStore, type SensorData } from '../../stores/websocketStore';
+	import type { SensorData } from '$lib/types';
+	import { io } from '$lib/ws';
 
 	let sensorData: SensorData | null = null;
     onMount(() => {
-        websocketStore.subscribe((data) => {
+        io.on("sensor_state", (data) => {
 		if (data) {
 			sensorData = data;
 		}
