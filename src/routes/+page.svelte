@@ -10,10 +10,10 @@
 
 <div class="flex flex-col h-full justify-center items-center p-5">
 	<div class="grid grid-cols-10 w-screen h-full">
-		<div class="col-span-2">
+		<div class="col-span-3">
 			<LeftSidebar/>
 		</div>
-		<div class="col-span-6">
+		<div class="col-span-5">
             <Graph />
 
         </div>
