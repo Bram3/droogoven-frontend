@@ -1,7 +1,11 @@
 export interface SensorData {
-    am2320_temp: number;
-    am2320_humidity: number;
-    ow_temps: number[];
+    temperature: number;
+    humidity: number;
+    ow1: number;
+    ow2: number;
+    ow3: number;
+    ow4: number;
+    ow5: number;
     average_temp: number;
 }
 

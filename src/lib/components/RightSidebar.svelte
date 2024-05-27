@@ -16,11 +16,15 @@
 
 <div class="flex flex-col justify-center items-center h-full">
 	{#if sensorData}
-		<p>Humidity: {sensorData.am2320_humidity} RH%</p>
+		<p>Humidity: {sensorData.humidity} RH%</p>
 		<p>Average Temperature: {sensorData.average_temp}°C</p>
-		<p>AM Temperature: {sensorData.am2320_temp}°C</p>
-		{#each sensorData.ow_temps as temp, index}
-			<p>OW{index + 1} Temperature: {temp}°C</p>
-		{/each}
+		<p>Middle Temperature: {sensorData.temperature}°C</p>
+		<p>Bottom Temperature: {sensorData.ow1}°C</p>
+		<p>Top Temperature: {sensorData.ow2}°C</p>
+		<p>Isolation Temperature: {sensorData.ow3}°C</p>
+		<p>Cooler Temperature: {sensorData.ow4}°C</p>
+		<p>Heater Temperature: {sensorData.ow5}°C</p>
+
+
 	{/if}
 </div>

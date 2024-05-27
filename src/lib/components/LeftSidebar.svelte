@@ -34,7 +34,6 @@
 
 	onMount(() => {
 		io.on('task_status', (data) => {
-			console.log(data);
 			currentTask = data;
 		});
 		io.on('task_done', () => {
@@ -58,9 +57,6 @@
 	let temp_low = 0;
 	let temp_high = 0;
 
-	// let fan_low = 0;
-	// let fan_high = 0;
-
 	let cooler_on = 0;
 	let cooler_off = 0;
 
@@ -82,8 +78,6 @@
 			never_ending,
 			temp_low,
 			temp_high,
-			// fan_low,
-			// fan_high,
 			cooler_on,
 			cooler_off
 		});
