@@ -43,10 +43,10 @@
 
 <div class="flex flex-col h-full justify-center items-center p-5">
 	<div class="grid grid-cols-10 w-screen h-full">
-		<div class="col-span-3">
+		<div class="col-span-2">
 			<LeftSidebar />
 		</div>
-		<div class="col-span-5">
+		<div class="col-span-6">
 			<TabGroup>
 				<Tab bind:group={tabSet} name="tab1" value={0}>Now</Tab>
 				<Tab bind:group={tabSet} name="tab2" value={1}>Last 24h</Tab>
